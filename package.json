@@ -5,18 +5,20 @@
   "main": "index.js",
   "author": "Anthony Graddy",
   "license": "MIT",
+  "luggage": true,
   "homepage": "https://github.com/agraddy/agraddy.luggage.parse.form#readme",
   "scripts": {
     "test": "node ./test"
   },
   "repository": {
-	  "type": "git",
-	  "url": "git://github.com/agraddy/agraddy.luggage.parse.form.git"
+    "type": "git",
+    "url": "git://github.com/agraddy/agraddy.luggage.parse.form.git"
   },
   "bugs": {
-	  "url": "https://github.com/agraddy/agraddy.luggage.parse.form/issues"
+    "url": "https://github.com/agraddy/agraddy.luggage.parse.form/issues"
   },
   "devDependencies": {
-	  "agraddy.test.tap": "^0.2.0"
+    "agraddy.test.res": "^0.4.0",
+    "agraddy.test.tap": "^0.2.0"
   }
 }
