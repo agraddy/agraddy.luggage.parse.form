@@ -45,3 +45,15 @@ mod.luggage(req3, res3, lug3, function() {
 	tap.assert.deepEqual(lug3.post, {"arr": [{"with": {"extra": {"depth": "one", "width": "one.five"}}}, {"with": {"extra": {"depth": "two", "width": "two.five"}}}], "deep": {"down": {"another": "second", "obj": "test"}}, "filter_json": [{"from": "TX", "to": "AL"}, {"from": "", "to": ""}, {"from": "", "to": ""}, {"from": "", "to": ""}, {"from": "", "to": ""}], "id": "1"}, 'Should handle arrays with nested values.');
 });
 
+
+var req4 = new stream.Readable();
+req4._read = function(size) {
+	this.push('id=1&encoded%5B%5D=one');
+	this.push(null);
+};
+var res4 = response();
+var lug4 = {};
+mod.luggage(req4, res4, lug4, function() {
+	tap.assert.deepEqual(lug4.post, {"id": "1", "encoded": ["one"]}, 'Should handle encoded data.');
+});
+
