@@ -16,6 +16,10 @@ var res = response();
 var lug = {};
 mod.luggage(req, res, lug, function() {
 	tap.assert.deepEqual(lug.post, {"one": "1", "two": "2", "three": "3"}, 'Should set post.');
+
+	// Have some concerns about adding this - size and streaming issues.
+	// Reconsider this in the future.
+	tap.assert.equal(lug.post_original, 'one=1&two=2&three=3', 'Should match the original data sent.');
 });
 
 tap.assert.equal(pack.luggage, true, 'The luggage item needs to be set in the package.json file.');
@@ -41,7 +45,7 @@ req3._read = function(size) {
 var res3 = response();
 var lug3 = {};
 mod.luggage(req3, res3, lug3, function() {
-	console.log(util.inspect(lug3.post, false, null));
+	//console.log(util.inspect(lug3.post, false, null));
 	tap.assert.deepEqual(lug3.post, {"arr": [{"with": {"extra": {"depth": "one", "width": "one.five"}}}, {"with": {"extra": {"depth": "two", "width": "two.five"}}}], "deep": {"down": {"another": "second", "obj": "test"}}, "filter_json": [{"from": "TX", "to": "AL"}, {"from": "", "to": ""}, {"from": "", "to": ""}, {"from": "", "to": ""}, {"from": "", "to": ""}], "id": "1"}, 'Should handle arrays with nested values.');
 });
 
