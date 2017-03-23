@@ -70,7 +70,6 @@ req5._read = function(size) {
 var res5 = response();
 var lug5 = {};
 mod.luggage(req5, res5, lug5, function() {
-	console.log(lug5.post);
 	tap.assert.deepEqual(lug5.post, {"test": "test space&ampersand", "two": "2"}, 'Should handle space and ampersand.');
 });
 
