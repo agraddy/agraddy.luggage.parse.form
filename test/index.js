@@ -64,13 +64,13 @@ mod.luggage(req4, res4, lug4, function() {
 // Space and ampersand
 var req5 = new stream.Readable();
 req5._read = function(size) {
-	this.push('test=test+space%26ampersand&two=2');
+	this.push('test=test+space%26ampersand+another&two=2');
 	this.push(null);
 };
 var res5 = response();
 var lug5 = {};
 mod.luggage(req5, res5, lug5, function() {
-	tap.assert.deepEqual(lug5.post, {"test": "test space&ampersand", "two": "2"}, 'Should handle space and ampersand.');
+	tap.assert.deepEqual(lug5.post, {"test": "test space&ampersand another", "two": "2"}, 'Should handle space and ampersand.');
 });
 
 
